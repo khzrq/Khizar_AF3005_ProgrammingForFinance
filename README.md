@@ -23,11 +23,10 @@ Currency Exchange Rate Tracking: Tracks exchange rates and suggests optimal conv
 Technologies Used
 
 Python
-
 Jupyter Notebook
-
+ipywidgets for interactivity
 
 Made by : Khizar Qureshi 22i-2745 FT-B
 
-ipywidgets for interactivity
+
 
