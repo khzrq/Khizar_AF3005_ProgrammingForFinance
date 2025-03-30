@@ -7,14 +7,27 @@ import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 import os
 
+import yfinance as yf
+
 def fetch_stock_data(tickers, start_date='2010-07-01', end_date='2023-02-10'):
     """Fetch historical stock data from Yahoo Finance."""
     try:
-        data = yf.download(tickers, start=start_date, end=end_date)['Adj Close']
+        data = yf.download(tickers, start=start_date, end=end_date)
+        
+        # Print available columns to check if 'Adj Close' exists
+        print("Available columns:", data.columns)
+        
+        # Use 'Adj Close' if available, otherwise fallback to 'Close'
+        if 'Adj Close' in data.columns:
+            data = data['Adj Close']
+        else:
+            print("Warning: 'Adj Close' not found, using 'Close' instead.")
+            data = data['Close']
+        
         returns = data.pct_change().dropna()
         return returns
     except Exception as e:
-        return str(e)
+        return f"Error fetching stock data: {str(e)}"
 
 def portfolio_risk(weights, cov_matrix):
     """Calculate portfolio risk (standard deviation)."""
