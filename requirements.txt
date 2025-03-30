@@ -1,8 +1,7 @@
-streamlit
-pandas
-numpy
-yfinance
 quantstats
-matplotlib.pyplot
-scipy.optimize
-os
+streamlit
+yfinance
+numpy
+pandas
+scipy
+matplotlib
