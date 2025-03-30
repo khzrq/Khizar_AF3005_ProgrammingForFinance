@@ -4,80 +4,56 @@ The integration of automation into financial management systems presents a signi
 
 The proposed Smart Financial Management System redefines how financial operations are handled, offering a transparent, data-driven, and automated solution. By addressing the limitations of traditional financial management methods and creating a seamless user experience, the system stands as a testament to technology’s potential to revolutionize financial decision-making. In contrast to conventional approaches, which often suffer from issues such as subjective risk assessments, manual inefficiencies, and lack of predictive insights, this solution guarantees that every financial decision is backed by data, automation, and transparency. This fundamentally shifts the paradigm of financial management, making it a more efficient and equitable system for all users.
 
-Assignment 2: Portfolio Optimzation by Weightage of Investment
+Assignment 2:
 
-Portfolio Investment Weight Optimization using Streamlit
+Family Budget Tracker & Financial Planner
 
-📌 Project Overview
-This project is an **interactive web application** built with **Python and Streamlit**, designed to help users optimize their investment portfolio based on **historical stock data**. The application allows users to **input their desired stocks**, fetches their **historical returns** using **Yahoo Finance**, and applies **mean-variance optimization** to allocate portfolio weights efficiently. Additionally, the app generates an **analysis report** using **QuantStats** and provides **visualizations** for better insights into portfolio performance.
+📌 Overview
 
----
+This is a Streamlit-based financial planning app designed to help families manage their finances efficiently. It provides a budget breakdown based on the number of adults and children in a household and generates expense allocation & savings recommendations based on the user's monthly income.
 
-## 🔑 Key Features
+🎯 Features
 
-✅ **User-Defined Stock Selection** – Users can enter their preferred stock tickers.  
-✅ **Real-Time Data Fetching** – Retrieves historical stock prices from Yahoo Finance.  
-✅ **Portfolio Optimization** – Uses **Mean-Variance Optimization** to allocate ideal weights.  
-✅ **QuantStats Analysis Report** – Generates an interactive **HTML report** of stock performance.  
-✅ **Data Visualization** – Displays **cumulative returns** and **portfolio allocations** using charts.  
-✅ **Downloadable Report** – Users can download a **detailed portfolio report**.  
+User-friendly Interface for easy financial planning
 
----
+Budget Allocation:
 
-## ⚙️ Technologies Used
+50% for Essential Expenses (rent, food, utilities, etc.)
 
-- **Python** – Core programming language  
-- **Streamlit** – Web UI framework for interactivity  
-- **Yahoo Finance (yfinance)** – Fetching historical stock data  
-- **NumPy & Pandas** – Data processing and analysis  
-- **SciPy** – Portfolio optimization using `scipy.optimize.minimize`  
-- **QuantStats** – Generating stock analysis reports  
-- **Matplotlib** – Plotting stock performance graphs  
+20% for Savings
 
----
+30% for Discretionary Spending (entertainment, dining, etc.)
 
-## 🚀 How It Works
+Per Adult & Per Child Expense Estimation
 
-1️⃣ **User inputs stock tickers** (e.g., AAPL, TSLA, GOOGL).  
-2️⃣ **The app fetches historical stock prices** and calculates daily returns.  
-3️⃣ **Portfolio weights are optimized** using Mean-Variance Optimization.  
-4️⃣ **Visualizations** (Pie charts, Return plots) are generated.  
-5️⃣ **An interactive QuantStats report is created** and displayed in the app.  
-6️⃣ **Users can download the analysis report** for further insights.  
+Pie Chart Visualization for easy understanding
 
----
+🚀 How to Run
 
-## 📄 Future Enhancements
+1️⃣ Install Dependencies
 
-🔹 **Real-Time Portfolio Tracking** – Integrate APIs for real-time stock monitoring.  
-🔹 **Risk-Return Metrics** – Include Sharpe Ratio, Alpha, and Beta analysis.  
-🔹 **Multi-Asset Support** – Extend to **cryptocurrencies, forex, and bonds**.  
-🔹 **Backtesting Module** – Allow users to simulate portfolio performance over time.  
+Ensure you have Python installed. Then, install the required packages:
 
----
+pip install streamlit pandas matplotlib
 
-## 🔧 Installation & Usage
+2️⃣ Run the App
 
-### **1️⃣ Clone the Repository**
-```bash
-git clone https://github.com/khzrq/portfolio-optimizer.git
-cd portfolio-optimizer
-```
-
-### **2️⃣ Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-### **3️⃣ Run the Streamlit App**
-```bash
 streamlit run app.py
-```
 
----
+Replace app.py with the name of your Python file if different.
 
-## 📬 Contact & Contribution
+📌 Deployment
 
-📧 **Email:** khizerqureshi100@gmail.com
-🤝 **Contributions are welcome!** Feel free to fork the repo and submit a pull request.  
+You can deploy this app on Streamlit Cloud or any web server supporting Python & Streamlit.
 
+🔧 Customization
+
+Modify the budget allocation percentages in the calculate_budget() function.
+
+Enhance UI using Streamlit components.
+
+📝 License
+
+This project is open-source. Feel free to modify and distribute!
+
+✅ Developed for efficient family budgeting! 🚀
