@@ -1,3 +1,5 @@
+Course: Programming for Finance
+Instructor: Dr Usama Arshad
 Assignment 1:Smart Financial Management System
 
 The integration of automation into financial management systems presents a significant opportunity to address longstanding issues of inefficiency, risk assessment, and user trust. By leveraging Python’s powerful libraries and interactive tools, this approach ensures that financial operations are transparent, streamlined, and efficient, fostering confidence among users. The implementation of intelligent algorithms further automates key financial processes, reducing the need for manual oversight and minimizing the likelihood of errors. This transformation enhances the security and efficiency of financial decision-making while encouraging broader participation by providing users with real-time insights.
@@ -57,3 +59,6 @@ Enhance UI using Streamlit components.
 This project is open-source. Feel free to modify and distribute!
 
 ✅ Developed for efficient family budgeting! 🚀
+
+hosted link: https://khizaraf3005programmingforfinance-tvn2tpavnrcf4fv72ugcda.streamlit.app/#11a8289c
+demo video: https://drive.google.com/file/d/1zCDyB0XiHu_qxb3tiVw4XX0O_fNd5LqV/view?usp=sharing
