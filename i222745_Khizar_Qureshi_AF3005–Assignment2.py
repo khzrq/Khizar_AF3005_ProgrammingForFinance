@@ -14,20 +14,46 @@ def fetch_stock_data(tickers, start_date='2010-07-01', end_date='2023-02-10'):
     try:
         data = yf.download(tickers, start=start_date, end=end_date)
         
-        # Print available columns to check if 'Adj Close' exists
+        # Debugging: Print Available Columns
         print("Available columns:", data.columns)
         
-        # Use 'Adj Close' if available, otherwise fallback to 'Close'
+        # Ensure 'Adj Close' or 'Close' exists
         if 'Adj Close' in data.columns:
             data = data['Adj Close']
-        else:
+        elif 'Close' in data.columns:
             print("Warning: 'Adj Close' not found, using 'Close' instead.")
             data = data['Close']
-        
+        else:
+            raise KeyError("Neither 'Adj Close' nor 'Close' found in Yahoo Finance data.")
+
+        # Calculate percentage change (returns)
         returns = data.pct_change().dropna()
+
+        # Debugging: Print first few rows
+        print("Fetched Returns Data:")
+        print(returns.head())
+
+        if returns.empty:
+            raise ValueError("Error: No stock data available. Check tickers or API limits.")
+
         return returns
+
     except Exception as e:
-        return f"Error fetching stock data: {str(e)}"
+        print(f"Error fetching stock data: {str(e)}")
+        return pd.DataFrame()  # Return empty DataFrame if there's an issue
+returns = fetch_stock_data(tickers)
+
+# If `returns` is a multi-stock DataFrame, take the average return per day
+returns = returns.mean(axis=1).to_frame(name="returns")  
+
+print("Final Returns DataFrame Before Analysis:")
+print(returns.head())  # Confirm correct structure before passing to quantstats
+
+if not returns.empty:
+    qs.reports.html(returns, output=report_path, title="Portfolio Analysis", benchmark="SPY")
+else:
+    print("Error: No valid stock return data to analyze.")
+
 
 def portfolio_risk(weights, cov_matrix):
     """Calculate portfolio risk (standard deviation)."""
@@ -75,7 +101,10 @@ if st.sidebar.button("Optimize Portfolio"):
             ax.pie(optimized_weights, labels=returns.columns, autopct='%1.1f%%', colors=plt.cm.Paired.colors)
             ax.set_title("Optimized Portfolio Allocation")
             st.pyplot(fig)
-            
+            print("Returns DataFrame Structure:")
+            print(returns.head())  # Show the first few rows
+            print("Returns DataFrame Columns:", returns.columns)  # Show the column names
+
             report_path = "analysis_report.html"
             qs.reports.html(returns, output=report_path, title="Portfolio Analysis", benchmark="SPY")
 
