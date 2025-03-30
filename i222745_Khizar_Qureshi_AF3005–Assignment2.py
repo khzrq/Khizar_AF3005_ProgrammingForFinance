@@ -41,19 +41,6 @@ def fetch_stock_data(tickers, start_date='2010-07-01', end_date='2023-02-10'):
     except Exception as e:
         print(f"Error fetching stock data: {str(e)}")
         return pd.DataFrame()  # Return empty DataFrame if there's an issue
-returns = fetch_stock_data(tickers)
-
-# If `returns` is a multi-stock DataFrame, take the average return per day
-returns = returns.mean(axis=1).to_frame(name="returns")  
-
-print("Final Returns DataFrame Before Analysis:")
-print(returns.head())  # Confirm correct structure before passing to quantstats
-
-if not returns.empty:
-    qs.reports.html(returns, output=report_path, title="Portfolio Analysis", benchmark="SPY")
-else:
-    print("Error: No valid stock return data to analyze.")
-
 
 def portfolio_risk(weights, cov_matrix):
     """Calculate portfolio risk (standard deviation)."""
