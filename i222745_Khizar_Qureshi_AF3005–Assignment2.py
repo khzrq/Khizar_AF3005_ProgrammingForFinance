@@ -18,10 +18,10 @@ def fetch_stock_data(tickers, start_date='2010-07-01', end_date='2023-02-10'):
         print("Available columns:", data.columns)
         
         # Ensure 'Adj Close' or 'Close' exists
-        if 'Adj Close' in data.columns:
-            data = data['Adj Close']
+        if 'Return' in data.columns:
+            data = data['Return']
         elif 'Close' in data.columns:
-            print("Warning: 'Adj Close' not found, using 'Close' instead.")
+            print("Warning: 'Return' not found, using 'Close' instead.")
             data = data['Close']
         else:
             raise KeyError("Neither 'Adj Close' nor 'Close' found in Yahoo Finance data.")
