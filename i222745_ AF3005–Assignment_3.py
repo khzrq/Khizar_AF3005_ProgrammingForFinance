@@ -90,23 +90,23 @@ if st.session_state.step >= 2:
 if st.session_state.model_trained:
     if st.button("📄 Generate HTML Report"):
         try:
-            # Calculate daily returns
-            returns = st.session_state.df['Close'].pct_change().dropna()
-            returns = returns.replace([np.inf, -np.inf], np.nan).dropna()
-            returns.name = "strategy"  # Rename to avoid index issues
+            # Extract 'Close' prices and compute returns
+            price_data = st.session_state.df['Close'].copy()
+            price_data.index = pd.to_datetime(st.session_state.df.index)
+            price_data = price_data.sort_index()
 
-            # Ensure proper datetime index
-            returns.index = pd.to_datetime(st.session_state.df.index[-len(returns):])
+            returns = price_data.pct_change().dropna()
+            returns.name = 'strategy'
 
-            # Generate report
-            qs.reports.html(returns, output='analysis_report.html', title='Financial Report')
+            # ✅ Check formatting before passing to QuantStats
+            if returns.empty:
+                st.warning("⚠️ Not enough data to generate returns.")
+            else:
+                qs.reports.html(returns, output='analysis_report.html', title='Financial Report')
 
-            st.success("✅ QuantStats HTML report generated!")
-
-            with open("analysis_report.html", "rb") as file:
-                st.download_button("📥 Download HTML Report", file, "financial_report.html", mime="text/html")
+                st.success("✅ QuantStats HTML report generated!")
+                with open("analysis_report.html", "rb") as file:
+                    st.download_button("📥 Download HTML Report", file, "financial_report.html", mime="text/html")
 
         except Exception as e:
             st.error(f"❌ Report generation failed: {e}")
-
-
