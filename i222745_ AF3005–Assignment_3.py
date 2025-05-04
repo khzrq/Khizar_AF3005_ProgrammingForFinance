@@ -86,24 +86,27 @@ if st.session_state.step >= 2:
         st.plotly_chart(fig)
 
 # -------------------------------
-# 📄 Step 4: Generate PDF Report
 # 📄 Step 4: Generate HTML Report
 if st.session_state.model_trained:
     if st.button("📄 Generate HTML Report"):
         try:
-            # Calculate daily returns from Close prices
+            # Calculate daily returns
             returns = st.session_state.df['Close'].pct_change().dropna()
             returns = returns.replace([np.inf, -np.inf], np.nan).dropna()
+            returns.name = "strategy"  # Rename to avoid index issues
 
-            # Generate HTML report
+            # Ensure proper datetime index
+            returns.index = pd.to_datetime(st.session_state.df.index[-len(returns):])
+
+            # Generate report
             qs.reports.html(returns, output='analysis_report.html', title='Financial Report')
 
             st.success("✅ QuantStats HTML report generated!")
 
-            # Offer download
             with open("analysis_report.html", "rb") as file:
                 st.download_button("📥 Download HTML Report", file, "financial_report.html", mime="text/html")
 
         except Exception as e:
             st.error(f"❌ Report generation failed: {e}")
+
 
