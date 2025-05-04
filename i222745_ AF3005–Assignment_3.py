@@ -89,7 +89,6 @@ if st.session_state.step >= 2:
 # 📄 Step 4: Generate PDF Report
 if st.session_state.model_trained:
     if st.button("📄 Generate PDF Report"):
-        returns = st.session_state.df['Close'].pct_change().dropna()
         qs.reports.html(returns, output='analysis_report.html', title='Financial Report', benchmark='SPY')
         st.success("✅ QuantStats HTML report generated!")
 
