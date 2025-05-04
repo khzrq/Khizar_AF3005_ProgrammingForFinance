@@ -2,3 +2,8 @@ streamlit
 pandas
 matplotlib
 IPython
+numpy
+yfinance
+scikit-learn
+plotly
+quantstats
