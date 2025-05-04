@@ -62,3 +62,23 @@ This project is open-source. Feel free to modify and distribute!
 
 hosted link: https://khizaraf3005programmingforfinance-tvn2tpavnrcf4fv72ugcda.streamlit.app/#11a8289c
 demo video: https://drive.google.com/file/d/1zCDyB0XiHu_qxb3tiVw4XX0O_fNd5LqV/view?usp=sharing
+
+# 📈 Financial Machine Learning App
+
+This project is a fully interactive machine learning application for financial analysis using Kragle datasets and real-time stock data from Yahoo Finance.
+
+## 🧠 Features
+
+- Upload or fetch financial datasets
+- Step-by-step machine learning pipeline (Linear Regression)
+- Data preprocessing and feature engineering
+- Interactive Plotly charts
+- PDF report generation with QuantStats
+- Themed visuals and buttons using Streamlit
+
+## 🚀 How to Run
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+
