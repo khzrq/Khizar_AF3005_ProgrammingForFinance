@@ -86,27 +86,14 @@ if st.session_state.step >= 2:
         st.plotly_chart(fig)
 
 # -------------------------------
-# 📄 Step 4: Generate HTML Report
+# 📊 Step 4: Show Descriptive Statistics
 if st.session_state.model_trained:
-    if st.button("📄 Generate HTML Report"):
+    if st.button("📊 Show Descriptive Statistics"):
         try:
-            # Extract 'Close' prices and compute returns
-            price_data = st.session_state.df['Close'].copy()
-            price_data.index = pd.to_datetime(st.session_state.df.index)
-            price_data = price_data.sort_index()
-
-            returns = price_data.pct_change().dropna()
-            returns.name = 'strategy'
-
-            # ✅ Check formatting before passing to QuantStats
-            if returns.empty:
-                st.warning("⚠️ Not enough data to generate returns.")
-            else:
-                qs.reports.html(returns, output='analysis_report.html', title='Financial Report')
-
-                st.success("✅ QuantStats HTML report generated!")
-                with open("analysis_report.html", "rb") as file:
-                    st.download_button("📥 Download HTML Report", file, "financial_report.html", mime="text/html")
+            desc_stats = st.session_state.df.describe().T  # Transpose for better display
+            st.success("✅ Descriptive statistics computed successfully!")
+            st.dataframe(desc_stats.style.format(precision=2))
 
         except Exception as e:
-            st.error(f"❌ Report generation failed: {e}")
+            st.error(f"❌ Failed to generate descriptive stats: {e}")
+
