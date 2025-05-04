@@ -23,7 +23,7 @@ import os
 st.set_page_config(page_title="Finance ML App", layout="wide")
 st.title("💹 Financial ML Dashboard")
 
-st.sidebar.image("https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif", use_column_width=True)
+st.sidebar.image("https://www.istockphoto.com/fi/valokuva/currency-and-exchange-stock-chart-for-finance-and-economy-display-gm1956949830-557559253", use_column_width=True)
 st.sidebar.markdown("## Upload Kragle Dataset")
 kragle_file = st.sidebar.file_uploader("Upload a CSV file", type=["csv"])
 
